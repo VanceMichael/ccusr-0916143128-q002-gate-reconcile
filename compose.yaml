@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    environment:
+      EXHIBIT_DB_PATH: /app/data/exhibits.sqlite3
+      HOST: 0.0.0.0
+      PORT: ${PORT:-3000}
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - exhibit-data:/app/data
+volumes:
+  exhibit-data:

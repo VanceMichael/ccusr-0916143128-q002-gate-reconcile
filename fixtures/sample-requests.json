@@ -1,0 +1,11 @@
+[
+  {
+    "event_id": "scan-9001",
+    "device_seq": 17,
+    "type": "ENTRY",
+    "item_id": "EX-001",
+    "venue": "HALL-A",
+    "quantity": 4,
+    "occurred_at": "2026-09-08T02:28:00Z"
+  }
+]

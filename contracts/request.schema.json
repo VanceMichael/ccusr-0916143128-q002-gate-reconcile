@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "进口展品临时入境核销服务 request",
+  "type": "object",
+  "required": [
+    "event_id",
+    "device_seq",
+    "type",
+    "item_id",
+    "venue",
+    "quantity",
+    "occurred_at"
+  ],
+  "properties": {
+    "event_id": {},
+    "device_seq": {},
+    "type": {},
+    "item_id": {},
+    "venue": {},
+    "quantity": {},
+    "occurred_at": {}
+  },
+  "additionalProperties": false
+}
