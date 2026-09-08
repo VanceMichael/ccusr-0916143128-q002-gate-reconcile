@@ -1,0 +1,10 @@
+{
+  "version": "2026-09-08",
+  "theme": "服贸会首批进口展品入境",
+  "reason_codes": [
+    "TEMPORARY_ADMISSION",
+    "PACKAGE_LINEAGE",
+    "EVENT_ORDERING"
+  ],
+  "notes": "Deterministic evaluation fixture; implementation must not fetch remote data."
+}
