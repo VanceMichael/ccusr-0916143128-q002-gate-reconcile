@@ -6,5 +6,5 @@
     "PACKAGE_LINEAGE",
     "EVENT_ORDERING"
   ],
-  "notes": "Deterministic evaluation fixture; implementation must not fetch remote data."
+  "notes": "本地确定性规则夹具，服务不得拉取远程数据。"
 }
