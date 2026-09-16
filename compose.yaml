@@ -1,22 +1,13 @@
 services:
-  scaffold-check:
-    image: golang:1.25-alpine
-    working_dir: /workspace
-    volumes:
-      - .:/workspace:ro
-    command: go run /workspace/scaffold/validate.go
-  postgres:
-    image: postgres:17-alpine
+  api:
+    build: .
     environment:
-      POSTGRES_DB: app
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: local-dev-only
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U app -d app"]
-      interval: 2s
-      timeout: 2s
-      retries: 20
+      EXHIBIT_DB_PATH: /app/data/exhibits.sqlite3
+      HOST: 0.0.0.0
+      PORT: ${PORT:-3000}
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
     volumes:
-      - app-data:/var/lib/postgresql/data
+      - exhibit-data:/app/data
 volumes:
-  app-data:
+  exhibit-data:

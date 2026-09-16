@@ -1,15 +1,21 @@
-# 进口展品临时入境核销服务 scaffold
+# 场馆展品扫描服务
 
-This repository is an intentionally incomplete starting point for a pure backend service. It contains input contracts, deterministic fixtures, and a Docker-based scaffold validator; no requested business API is implemented.
+该服务接收进口展品在场馆内的在线扫描事件，并维护展品的当前位置和业务状态。当前接口要求事件按业务发生顺序到达：展品登记后可入场，在场内可转移库位，最后办理出境。每个 `event_id` 只会应用一次，状态变化与事件记录写入同一个 SQLite 事务。
 
-Business theme: 服贸会首批进口展品入境
-Theme source: https://www.chinanews.com/scroll-news/news1.html
-Required stack: Go 1.25, PostgreSQL, Docker Compose
+## 初始化与启动
 
-Validate the baseline inputs with:
-
-```sh
-docker compose run --rm --no-deps scaffold-check
+```bash
+npm install
+npm run db:migrate
+npm run dev
 ```
 
-The implementation must preserve the contracts and fixtures, add the service and its automated tests, and provide a repeatable Docker-based black-box self-test. External production systems must not be used.
+数据库默认使用当前目录的 `exhibits.sqlite3`，可以通过 `EXHIBIT_DB_PATH` 改为其他本地路径。监听地址分别由 `HOST` 和 `PORT` 控制。
+
+## 测试
+
+```bash
+npm test
+```
+
+测试直接调用 Fastify 的 HTTP 注入边界，并为每个用例创建独立的临时数据库。
